@@ -75,8 +75,8 @@ variable "security_group_rules" {
     }
   ]
   description = <<-EOT
-    A list of maps of Security Group rules. 
-    The values of map is fully complated with `aws_security_group_rule` resource. 
+    A list of maps of Security Group rules.
+    The values of map is fully complated with `aws_security_group_rule` resource.
     To get more info see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule .
   EOT
 }
@@ -338,3 +338,8 @@ variable "ssm_patch_manager_s3_log_bucket" {
   description = "The name of the s3 bucket to export the patch log to"
 }
 
+variable "static_interface" {
+  type        = bool
+  default     = false
+  description = "Weather or not to assign a static interface to the intance."
+}

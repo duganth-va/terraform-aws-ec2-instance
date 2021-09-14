@@ -149,6 +149,13 @@ resource "aws_instance" "default" {
     http_tokens                 = var.metadata_http_tokens_required ? "required" : "optional"
   }
 
+  dynamic "network_network_interface" {
+    for_each = var.static_interface ? [1] : []
+    content {
+      network_interface_id = aws_network_interface.static.id
+      device_index         = 0
+    }
+  }
   tags = module.this.tags
 
   volume_tags = var.volume_tags_enabled ? module.this.tags : {}
